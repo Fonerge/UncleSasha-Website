@@ -1,0 +1,16 @@
+Options +FollowSymLinks
+RewriteEngine on
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteCond %{THE_REQUEST} ([^\s]*)\/{2,}(\?[^\s]*)?
+RewriteRule (.*) %1 [R=301,L]
+
+RewriteRule ^menu*$ ./pages/menu.php
+RewriteRule ^about*$ ./pages/about.php
+RewriteRule ^contact*$ ./pages/contact.php
+RewriteRule ^payments-and-delivery*$ ./pages/payments-delivery.php
+RewriteRule ^order*$ ./pages/check-order.php
+RewriteRule ^food/([0-9]+)/?$ pages/product.php?id=$1 [NC,L]
+
+ErrorDocument 404 /404.php
